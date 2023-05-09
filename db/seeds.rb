@@ -14,7 +14,8 @@ items = Item.create([
     {name: "Burger", price: 50, callories: 500},
     {name: "Pasta", price: 80, callories: 800},
     {name: "Salad", price: 30, callories: 300},
-    {name: "Soup", price: 20, callories: 200}
+    {name: "Soup", price: 20, callories: 200},
+    {name: "Coke", price: 10, callories: 100}
 ])
 #Restaurants
 restaurants = Restaurant.create([
