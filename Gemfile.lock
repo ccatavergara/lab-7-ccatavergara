@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/ICC4103-202310-WebTech/webtech-lab-tests.git
+  revision: 624513a6d20ec21bbd582f6761c8ddd767bcc141
+  branch: main
+  specs:
+    webtech (0.1.2)
+      rails (>= 7.0.4.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -226,6 +234,7 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
+  webtech!
 
 RUBY VERSION
    ruby 3.1.2p20
