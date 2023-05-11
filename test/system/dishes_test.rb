@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class DishesTest < ApplicationSystemTestCase
   setup do
-    @dish = dishes(:one)
+    @dish = dishes(:dish01)
   end
 
   test "visiting the index" do

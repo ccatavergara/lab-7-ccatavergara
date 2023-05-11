@@ -18,11 +18,11 @@ class RestaurantTest < ActiveSupport::TestCase
   end
 
   test 'should validate presence of name at db level' do
-    assert_equal false, ActiveRecord::Base.connection.column_exists?(:restaurants, :name, null: false)
+    assert_equal true, ActiveRecord::Base.connection.column_exists?(:restaurants, :name, null: false)
   end
 
   test 'should validate presence of address at db level' do
-    assert_equal false, ActiveRecord::Base.connection.column_exists?(:restaurants, :address, null: false)
+    assert_equal true, ActiveRecord::Base.connection.column_exists?(:restaurants, :address, null: false)
   end
 
   test 'should have many items' do

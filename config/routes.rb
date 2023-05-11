@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "static_pages#home"
-  resources :restaurants
-  resources :items
+
+  resources :restaurants do
+    resources :items
+  end
   resources :dishes
+
+  # resources :items, defaults: {format: :html}
 end

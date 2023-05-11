@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class RestaurantsTest < ApplicationSystemTestCase
   setup do
-    @restaurant = restaurants(:one)
+    @restaurant = restaurants(:r01)
   end
 
   test "visiting the index" do

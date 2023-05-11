@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ItemsTest < ApplicationSystemTestCase
   setup do
-    @item = items(:one)
+    @item = items(:i01)
   end
 
   test "visiting the index" do
