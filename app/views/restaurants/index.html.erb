@@ -5,14 +5,12 @@
 
     <div id="restaurants">
       <% @restaurants.each do |restaurant| %>
-        <div class="card" style="width: 18rem;">
-        <%= render restaurant %>
+        <%= render restaurant%>
         <p>
-          <%= link_to "Show this restaurant", restaurant %>
+          <%= link_to "Show this restaurant", restaurant, class: 'btn btn-outline-info btn-sm' %>
         </p>
       <% end %>
-      </div>
     </div>
 
-  <%= link_to "New restaurant", new_restaurant_path %>
+  <%= link_to "New restaurant", new_restaurant_path, class: 'btn btn-outline-secondary btn-sm' %>
 </div>

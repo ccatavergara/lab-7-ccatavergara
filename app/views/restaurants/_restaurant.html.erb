@@ -1,14 +1,12 @@
+
 <div class='container'>
-  <div id="<%= dom_id restaurant %>">
-    <p>
-      <strong>Name:</strong>
-      <%= restaurant.name %>
-    </p>
+    <div id="<%= dom_id restaurant %>">
+      <h3 class="card-title">
+        <%= restaurant.name %>
+      </h3>
 
-    <p>
-      <strong>Address:</strong>
-      <%= restaurant.address %>
-    </p>
-
-  </div>
+      <p class="card-subtitle mb-2 text-muted">
+        <%= restaurant.address %>
+      </p>
+    </div>
 </div>

@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Restaurant.delete_all
-Dish.delete_all
-Item.delete_all
+Restaurant.destroy_all
+Dish.destroy_all
+Item.destroy_all
 #Restaurants
 restaurants = Restaurant.create([
     {name: "Pizza Hut", address: "Av. Las Condes 1234"},
@@ -19,7 +19,7 @@ restaurants = Restaurant.create([
 ])
 #Dishes
 dishes = Dish.create([
-    {name: "Beginning Course"},
+    {name: "Side Course"},
     {name: "Main Course"},
     {name: "Dessert"},
     {name: "Drink"},
@@ -27,9 +27,11 @@ dishes = Dish.create([
 ])
 #Items 
 items = Item.create([
-    {name: "Pizza", price: 100, callories: 1000, restaurant: restaurants[0], dish: dishes[0]},
-    {name: "Burger", price: 50, callories: 500, restaurant: restaurants[1], dish: dishes[1]},
+    {name: "Pizza", price: 100, callories: 1000, restaurant: restaurants[0], dish: dishes[1]},
+    {name: "Burger", price: 50, callories: 500, restaurant: restaurants[1], dish: dishes[0]},
+    {name: "French Fries", price: 25, callories: 500, restaurant: restaurants[1], dish: dishes[1]},
     {name: "Pasta", price: 80, callories: 800, restaurant: restaurants[2], dish: dishes[1]},
+    {name: "Breadsticks", price: 50, callories: 300, restaurant: restaurants[2], dish: dishes[4]},
     {name: "Salad", price: 30, callories: 300, restaurant: restaurants[3], dish: dishes[1]},
     {name: "Soup", price: 20, callories: 200, restaurant: restaurants[4], dish: dishes[1]},
     {name: "Coke", price: 10, callories: 100, restaurant: restaurants[0], dish: dishes[3]}

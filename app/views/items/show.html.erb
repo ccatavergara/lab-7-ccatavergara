@@ -4,9 +4,11 @@
   <%= render @item %>
 
   <div>
-    <%= link_to "Edit this item", edit_item_path %> |
-    <%= link_to "Back to items", item_path %>
+    <%= link_to "Edit", edit_restaurant_item_path(@item.restaurant_id, @item), class: 'btn btn-outline-warning btn-sm' %> |
 
-    <%= button_to "Destroy this item", @item, method: :delete %>
+    <br><br>
+    <%= link_to "Back to items", restaurant_path(@item.restaurant_id), class: 'btn btn-primary btn-sm' %>
+
+    
   </div>
 </div>

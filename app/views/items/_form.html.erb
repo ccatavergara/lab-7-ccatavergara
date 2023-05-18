@@ -1,32 +1,38 @@
-<%= form_with(model: item) do |form| %>
-  <% if item.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<div class='container'>
+  <%= form_for ([:restaurant, item]) do |form| %>
+    <% if @item.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
-      <ul>
-        <% item.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @item.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='card'>
+        <div class='card-body'>
+            <div class='mb-3'>
+            <%= form.label :name, { class: "form-label"} %>
+            <%= form.text_field :name, { class: "form-control", placeholder: "Name" }%>
+            </div>
+
+            <div class='mb-3'>
+            <%= form.label :price, { class: "form-label"} %>
+            <%= form.number_field :price, { class: "form-control", placeholder: "Price" } %>
+            </div>
+
+            <div class='mb-3'>
+            <%= form.label :callories, { class: "form-label"} %>
+            <%= form.number_field :callories, { class: "form-control", placeholder: "Callories" } %>
+            </div>
+
+            <form>
+                <input type="submit" value="Submit changes" class='btn btn-primary'>
+            </form>
+        </div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :callories, style: "display: block" %>
-    <%= form.number_field :callories %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

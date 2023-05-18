@@ -1,20 +1,23 @@
-<div class='container'>
+<div class='container text-center'>
   <p style="color: green"><%= notice %></p>
 
   <%= render @restaurant %>
 
 
+  <h5>Items</h5>
   <div>
 
-    <ul>
     <% @restaurant.items.each do |item| %>
-    <li><%= link_to item.name, item %></li>
+      <%= link_to item.name, restaurant_item_path(@restaurant, item), class: "btn btn-info" %>
     <% end %>
 
-    </ul>
-    <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
-    <%= link_to "Back to restaurants", restaurants_path %>
+    <br>
+    <br>
+    <%= link_to "Edit", edit_restaurant_path(@restaurant), class: "btn btn-outline-warning btn-sm" %> |
+    <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-outline-dark btn-sm" %>
 
-    <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
+    <br><br>
+    <%= button_to "Destroy this restaurant", @restaurant, method: :delete , class: "btn btn-outline-danger btn-sm"%>
+
   </div>
 </div>

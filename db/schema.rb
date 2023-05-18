@@ -39,6 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_014436) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "items", "dishes"
-  add_foreign_key "items", "restaurants"
+  add_foreign_key "items", "dishes", on_delete: :cascade
+  add_foreign_key "items", "restaurants", on_delete: :cascade
 end
