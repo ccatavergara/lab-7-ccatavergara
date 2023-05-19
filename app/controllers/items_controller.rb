@@ -3,8 +3,7 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    # @items = Item.all
-    @items = Item.where(restaurant_id: params[:restaurant_id])
+    @items = Item.all
   end
 
   # GET /items/1 or /items/1.json
@@ -23,18 +22,16 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
-    # @item.restaurant = Restaurant.find(params[:id])
 
-    # respond_to do |format|
-    if @item.save
-      render :show, status: :created, location: @item
-      # format.json { render :show, status: :created, location: @item }
-    else
-      render json: @item.errors, status: :unprocessable_entity
-      # format.html { render :new, status: :unprocessable_entity }
-      # format.json { render json: @item.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
+        format.json { render :show, status: :created, location: @item }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
     end
-    # end
   end
 
   # PATCH/PUT /items/1 or /items/1.json

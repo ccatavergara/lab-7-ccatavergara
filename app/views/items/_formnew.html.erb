@@ -29,9 +29,19 @@
             <%= form.number_field :callories, { class: "form-control", placeholder: "Callories" } %>
             </div>
 
-            <form>
-                <input type="submit" value="Submit changes" class='btn btn-primary'>
-            </form>
+            <div class='mb-3'>
+              <%= form.label :restaurant_id, class: "form-label" %>
+              <%= form.collection_select :restaurant_id, Restaurant.all, :id, :name, { include_blank: "Select a Restaurant" }, class: "form-control" %>
+            </div>
+
+            <div class='mb-3'>
+              <%= form.label :dish_id, {class: "form-label"} %>
+              <%= form.collection_select :dish_id, Dish.all, :id, :name, { include_blank: 'Select a Dish' }, class: "form-control" %>
+            </div>
+
+            <div>
+                <%= form.submit "Create Item", class: "btn btn-primary" %>
+            </div>
         </div>
     </div>
   <% end %>

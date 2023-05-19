@@ -1,16 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class='container text-center'>
+  <p style="color: green"><%= notice %></p>
 
-<div class="container">
-  <h1>Dishes</h1>
+  <div class="container">
+    <h1>Dishes</h1>
 
-  <div id="dishes">
-    <% @dishes.each do |dish| %>
-      <%= render dish %>
-      <p>
-        <%= link_to "Show this dish", dish %>
-      </p>
-    <% end %>
+    <div id="dishes">
+      <% @dishes.each do |dish| %>
+        <%= render dish %>
+        <p>
+          <%= link_to "Show this dish", dish, class: 'btn btn-outline-info btn-sm' %>
+        </p>
+      <br>
+      <% end %>
+      
+    </div>
   </div>
-</div>
 
-  <%= link_to "New dish", new_dish_path %>
+    <%= link_to "New dish", new_dish_path, class: 'btn btn-outline-dark btn-sm' %>
+</div>

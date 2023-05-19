@@ -1,9 +1,25 @@
 
-<div class="container">
+<div class="container text-center">
     <h1>Restaurant APP</h1>
-</div>
-<div class="container">
-    <h2>Look up the information.</h2>
-</div>
 
-<div class="container">
+<h3>Top 3 Restaurants with most items</h3>
+<div class="row">
+  <% Restaurant.select("restaurants.*, COUNT(items.id) AS items_count")
+              .joins(:items)
+              .group("restaurants.id")
+              .order("items_count DESC")
+              .limit(3)
+              .each do |restaurant| %>
+
+    <div class="col-md-4 mt-4">
+      <div class="card border-dark">
+        <div class="card-body">
+            <h5 class="card-subtitle"><%= restaurant.name %></h5>
+            <p class="card-text"><%= restaurant.address %></p>
+            <p class="card-title">Total items: <%= restaurant.items_count.to_i %></p>
+            <%= link_to "Show this restaurant", restaurant_path(restaurant), class: "btn btn-outline-info btn-sm" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class='container text-center'>
+  <p style="color: green"><%= notice %></p>
 
-<%= render @dish %>
+  <%= render @dish %>
 
-<div>
-  <%= link_to "Edit this dish", edit_dish_path(@dish) %> |
-  <%= link_to "Back to dishes", dishes_path %>
-
-  <%= button_to "Destroy this dish", @dish, method: :delete %>
+  <div>
+    <% @dish.items.each do |item| %>
+      <li><%= item.name %> </li>
+    <% end %>
+      <br>
+    <%= link_to "Edit this dish", edit_dish_path(@dish), class: 'btn btn-outline-warning btn-sm' %> |
+    <%= link_to "Back to dishes", dishes_path, class: 'btn btn-outline-dark btn-sm' %>
+      <br><br>
+    <%= button_to "Destroy this dish", @dish, method: :delete, class: 'btn btn-outline-danger btn-sm'%>
+  </div>
 </div>

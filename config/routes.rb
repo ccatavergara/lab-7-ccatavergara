@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :items
   end
+  resources :items
   resources :dishes
 
-  # resources :items, defaults: {format: :html}
 end
