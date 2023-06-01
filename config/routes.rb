@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :restaurants do
     resources :items
+    get 'dishes', to: 'restaurants#dishes', defaults: { format: 'json' }
   end
   resources :items
   resources :dishes

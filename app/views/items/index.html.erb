@@ -1,16 +1,31 @@
+<p style="color: green"><%= notice %></p>
+<div style='margin:1rem;'>
+  <%= link_to '', root_path, class: 'btn btn-outline-dark fa-solid fa-arrow-left', style:'margin:1rem;'%>
+</div>
+
 <div class='container text-center'>
-  <p style="color: green"><%= notice %></p>
-
   <h1>Items</h1>
+</div>
+  <table class="table" style='margin:auto; width:50rem;'>
+  <thead>
+    <tr>
+      <th scope='col'>Name</th>
+      <th scope='col'>Price</th>
+      <th scope='col'>Callories</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.name%></td>
+          <td><%= item.price%></td>
+          <td><%= item.callories%></td>
+          <td><%= link_to "", item, class: 'btn btn-outline-info btn-sm fa-solid fa-eye' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-  <div id="items">
-    <% @items.each do |item| %>
-      <%= render item %>
-      <p>
-        <%= link_to "Show this item", item, class: 'btn btn-outline-info btn-sm'%>
-      </p>
-    <% end %>
-  </div>
-
-  <%= link_to "New item", new_item_path, class: 'btn btn-outline-dark btn-sm' %>
+  <div style='margin:2rem;'>
+  <%= link_to "", new_item_path, class: 'btn btn-outline-secondary btn-sm fa-solid fa-plus' %>
 </div>

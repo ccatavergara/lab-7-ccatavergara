@@ -1,13 +1,16 @@
-<div class='container text-center'>
+<div class='container' style='margin-left: 3rem; margin-top:1rem;'>
+  <%= link_to "", items_path, class: "btn btn-outline-dark fa-solid fa-arrow-left" %>
   <p style="color: green"><%= notice %></p>
+
 
   <%= render @item %>
 
-  <div>
-    <%= link_to "Edit", edit_restaurant_item_path(@item.restaurant_id, @item), class: 'btn btn-outline-warning btn-sm' %> | <%= link_to "Back to items", restaurant_path(@item.restaurant_id), class: 'btn btn-outline-dark btn-sm' %>
 
+  <div>
+    <br>
+    <%= link_to "", edit_restaurant_item_path(@item.restaurant_id, @item), class: 'btn btn-outline-warning fa-solid fa-pencil' %>
     <br><br>
-  
-    <%= button_to "Destroy this item", @item, method: :delete , class: "btn btn-outline-danger btn-sm"%>
+
+    <%= button_to "", @item, method: :delete , class: "btn btn-outline-danger fa-solid fa-trash"%>
   </div>
 </div>

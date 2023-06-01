@@ -3,7 +3,14 @@ class DishesController < ApplicationController
 
   # GET /dishes or /dishes.json
   def index
-    @dishes = Dish.all
+    if params[:restaurant_id]
+      @dishes = Restaurant.find(params[:restaurant_id]).dishes
+      respond_to do |format|
+        format.json { render json: @dishes}
+      end
+    else
+      @dishes = Dish.all
+    end
   end
 
   # GET /dishes/1 or /dishes/1.json

@@ -1,15 +1,33 @@
-<div class='container text-center'>
+
   <p style="color: green"><%= notice %></p>
+<div style='margin:1rem;'>
+  <%= link_to '', root_path, class: 'btn btn-outline-dark fa-solid fa-arrow-left', style:'margin:1rem;'%>
+</div>
 
+<div class='container text-center'>
   <h1>Restaurants</h1>
-    <div id="restaurants">
-      <% @restaurants.each do |restaurant| %>
-        <%= render restaurant%>
-        <p>
-          <%= link_to "Show this restaurant", restaurant, class: 'btn btn-outline-info btn-sm' %>
-        </p>
-      <% end %>
-    </div>
+</div>
 
-  <%= link_to "New restaurant", new_restaurant_path, class: 'btn btn-outline-secondary btn-sm' %>
+  <table class="table" style='margin:auto; width:50rem;'>
+  <thead>
+    <tr>
+      <th scope='col'>Name</th>
+      <th scope='col'>Address</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @restaurants.each do |restaurant| %>
+        <tr>
+          <td><%= restaurant.name%></td>
+          <td><%= restaurant.address%></td>
+          <td><%= link_to "", restaurant, class: 'btn btn-outline-info btn-sm fa-solid fa-eye' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <div style='margin-left:2rem;'>
+  <%= link_to "", new_restaurant_path, class: 'btn btn-outline-secondary btn-sm fa-solid fa-plus' %>
+  </div>
 </div>

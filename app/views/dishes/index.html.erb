@@ -1,20 +1,31 @@
-<div class='container text-center'>
+
   <p style="color: green"><%= notice %></p>
+<div style='margin:1rem;'>
+  <%= link_to '', root_path, class: 'btn btn-outline-dark fa-solid fa-arrow-left', style:'margin:1rem;'%>
+</div>
 
-  <div class="container">
-    <h1>Dishes</h1>
+<div class='container text-center'>
+  <h1>Dishes</h1>
+</div>
 
-    <div id="dishes">
+  <table class="table" style='margin:auto; width:50rem;'>
+  <thead>
+    <tr>
+      <th scope='col'>Name</th>
+    </tr>
+  </thead>
+    <tbody>
       <% @dishes.each do |dish| %>
-        <%= render dish %>
-        <p>
-          <%= link_to "Show this dish", dish, class: 'btn btn-outline-info btn-sm' %>
-        </p>
-      <br>
+        <tr>
+          <td><%= dish.name%></td>
+          <td><%= link_to "", dish, class: 'btn btn-outline-info btn-sm fa-solid fa-eye' %></td>
+        </tr>
       <% end %>
-      
-    </div>
-  </div>
+    </tbody>
+  </table>
 
-    <%= link_to "New dish", new_dish_path, class: 'btn btn-outline-dark btn-sm' %>
+  <br>
+  <div style='margin-left:2rem;'>
+  <%= link_to "", new_dish_path, class: 'btn btn-outline-secondary btn-sm fa-solid fa-plus' %>
+  </div>
 </div>

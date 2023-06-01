@@ -1,16 +1,29 @@
-<div class='container text-center'>
+<div class='container' style='margin-left: 3rem; margin-top:1rem;'>
+  <%= link_to "", dishes_path, class: "btn btn-outline-dark fa-solid fa-arrow-left" %>
+  <p style="color: green"><%= notice %></p>
+</div>
+
+<div class='container' style='width:25rem; margin:3rem;'>
   <p style="color: green"><%= notice %></p>
 
-  <%= render @dish %>
-
-  <div>
-    <% @dish.items.each do |item| %>
-      <li><%= item.name %> </li>
-    <% end %>
-      <br>
-    <%= link_to "Edit this dish", edit_dish_path(@dish), class: 'btn btn-outline-warning btn-sm' %> |
-    <%= link_to "Back to dishes", dishes_path, class: 'btn btn-outline-dark btn-sm' %>
-      <br><br>
-    <%= button_to "Destroy this dish", @dish, method: :delete, class: 'btn btn-outline-danger btn-sm'%>
+  <div class="card">
+    <div class="card-header text-center" style='background-color:#adb5bd;'>
+      <%= render @dish %>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% @dish.items.each do |item| %>
+        <li class='list-group-item'><%= item.name %> </li>
+      <% end %>
+    </ul>
   </div>
+
+  <br>
+    <%= link_to "", edit_dish_path(@dish), class: 'btn btn-outline-warning fa-solid fa-pencil' %>
+      <br><br>
+    <%= button_to "", @dish, method: :delete, class: 'btn btn-outline-danger fa-solid fa-trash'%>
+  </div>
+
+
+
+
 </div>

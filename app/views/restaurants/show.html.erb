@@ -1,22 +1,50 @@
-<div class='container text-center'>
+<script>
+function totalIt()
+{
+  var input = document.getElementsByName("product");
+  var total = 0;
+  for (var i = 0; i < input.length; i++)
+  {
+      if (input[i].checked)
+      {
+        total += parseFloat(input[i].value);
+      }
+  }
+  document.getElementById("total").value = "$" + total.toFixed(2);
+}
+
+</script>
+
+<div class='container' style='margin-left: 3rem; margin-top:1rem;'>
+  <%= link_to "", restaurants_path, class: "btn btn-outline-dark fa-solid fa-arrow-left" %>
   <p style="color: green"><%= notice %></p>
 
-  <%= render @restaurant %>
-
-
-  <h5>Items</h5>
+  <div class="card text-center" style='width:25rem; background-color:#dee2e6;'>
+  <%= render @restaurant%>
+  </div>
+  <br>
+  <h5><strong>Items</strong></h5>
 
     <% @restaurant.items.each do |item| %>
-      <%= link_to item.name, restaurant_item_path(@restaurant, item), class: "btn btn-info" %>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name='product' value="<%= item.price %>" onclick='totalIt()'>
+        <label class="form-check-label" for="item-<%= item.id %>">
+          <%= item.name %>
+          <br>
+
+          <div class='mb-2 text-muted'>$<%= item.price%></div>
+        </label>
+      </div>
     <% end %>
+    <br>
+    <h6><strong>Total price:</strong></h6>
+    <input class='container' style='width:8rem; background-color:#dee2e6;' value="$0.00" readonly="readonly" id="total"/>
 
     <br>
     <br>
-    <%= link_to "Edit", edit_restaurant_path(@restaurant), class: "btn btn-outline-warning btn-sm" %> |
-    <%= link_to "Back to restaurants", restaurants_path, class: "btn btn-outline-dark btn-sm" %>
-
-    <br><br>
-    <%= button_to "Destroy this restaurant", @restaurant, method: :delete , class: "btn btn-outline-danger btn-sm"%>
+    <%= link_to "", edit_restaurant_path(@restaurant), class: "btn btn-outline-warning fa-solid fa-pencil" %>
+    <br> <br>
+    <%= button_to "", @restaurant, method: :delete , class: "btn btn-outline-danger fa-solid fa-trash"%>
 
   </div>
 </div>
