@@ -1,0 +1,6 @@
+<h3>Dishes for <%= @restaurant.name %></h3>
+<ul>
+  <% @dishes.each do |dish| %>
+    <li><%= dish.name %></li>
+  <% end %>
+</ul>

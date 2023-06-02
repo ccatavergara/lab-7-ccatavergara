@@ -24,11 +24,36 @@
             </li>
         </ul>
 
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form id="search-bar" class="d-flex">
+            <input id="search-restaurant" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark fa-solid fa-magnifying-glass" type="submit"></button>
         </form>
 
         </div>
     </div>
 </nav>
+
+<script>
+document.getElementById('search-bar').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var searchRestaurant = document.getElementById('search-restaurant').value;
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/restaurants/search?name=' + encodeURIComponent(searchRestaurant), true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var data = JSON.parse(xhr.responseText);
+        if (data && data.id) {
+          window.location.href = '/restaurants/' + data.id;
+        } else {
+          alert('This restaurant does not exist. Please try another name.');
+        }
+      } else {
+        console.error('Error:', xhr.status);
+      }
+    }
+  };
+  xhr.send();
+});
+</script>

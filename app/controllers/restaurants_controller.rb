@@ -4,7 +4,16 @@ class RestaurantsController < ApplicationController
   # GET /restaurants or /restaurants.json
   def index
     @restaurants = Restaurant.all
+  end
 
+  def search
+    @restaurant = Restaurant.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%").first
+
+    if @restaurant
+      render json: { id: @restaurant.id }
+    else
+      render json: { error: "The restaurant does not exist." }, status: :not_found
+    end
   end
 
   # GET /restaurants/1 or /restaurants/1.json

@@ -8,9 +8,19 @@
 
   <div>
     <br>
+    <button id='restaurants' class='btn btn-outline-dark' onclick='showRestaurants(event)'>Show Restaurants</button>
+    <br> <br>
     <%= link_to "", edit_restaurant_item_path(@item.restaurant_id, @item), class: 'btn btn-outline-warning fa-solid fa-pencil' %>
     <br><br>
 
     <%= button_to "", @item, method: :delete , class: "btn btn-outline-danger fa-solid fa-trash"%>
   </div>
 </div>
+
+
+<script>
+  function showRestaurants(event){
+    event.preventDefault();
+    let restaurants = document.getElementById('restaurants');
+  }
+</script>

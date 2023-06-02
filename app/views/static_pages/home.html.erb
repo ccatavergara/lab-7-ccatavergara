@@ -27,7 +27,7 @@
       </div>
         <br>
         <div id="dishes-container-<%= restaurant.id %>">
-            <%= link_to 'See more', '#', class: 'btn btn-outline-dark btn-sm', id: 'cargar-ajax' %>
+            <button onclick='showDishes(this)' data-restaurant-id="<%= restaurant.id %>" class= 'btn btn-outline-dark btn-sm'>See more</button>
         </div>
     </div>
   <% end %>
@@ -35,48 +35,20 @@
 </div>
 
 <script>
-    // let btn = document.getElementById('cargar-ajax');
-    // btn.addEventListener('click', item => {
-    //     item.preventDefault();
-    //     console.log('Impreso desde la función');
-    //     let dishes = document.getElementById('dishes');
+    function showDishes(button) {
+    var restaurantId = $(button).data('restaurant-id');
+    var url = '/restaurants/' + restaurantId + '/dishes';
 
-    //     fetch('/dishes.json', {
-    //         headers: {
-    //             'X-Requested-With': 'XMLHttpRequest'
-    //         }
-    //     })
-    //         .then(response => response.text())
-    //         .then(x => categories.innerHTML = x)
-    // });
-
-    document.addEventListener('DOMContentLoaded', () => {
-    const seeMoreButtons = document.querySelectorAll('.see-more-button');
-
-    seeMoreButtons.forEach(button => {
-      button.addEventListener('click', event => {
-        event.preventDefault();
-
-        console.log('Impreso desde la función');
-        const restaurantId = button.dataset.restaurantId;
-        const container = document.getElementById(`dishes-container-${restaurantId}`);
-
-        fetch(`/restaurants/${restaurantId}/dishes.json`, {
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-          }
-        })
-          .then(response => response.json())
-          .then(dishes => {
-            container.innerHTML = '';
-            dishes.forEach(dish => {
-              const dishElement = document.createElement('p');
-              dishElement.textContent = dish.name;
-              container.appendChild(dishElement);
-            });
-          })
-          .catch(error => console.error(error));
-      });
+    $.ajax({
+      type: 'GET',
+      url: url,
+      dataType: 'html',
+      success: function(response) {
+        $('#dishes-container-' + restaurantId).html(response);
+      },
+      error: function() {
+        alert('An error occurred while fetching additional dishes.');
+      }
     });
-  });
+  }
 </script>

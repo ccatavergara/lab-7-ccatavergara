@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "static_pages#home"
 
+  get 'restaurants/search', to: 'restaurants#search'
   resources :restaurants do
     resources :items
-    get 'dishes', to: 'restaurants#dishes', defaults: { format: 'json' }
+    get 'dishes', to: 'dishes#list', as: 'restaurant_dishes'
   end
   resources :items
   resources :dishes
