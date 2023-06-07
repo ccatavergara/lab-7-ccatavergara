@@ -4,12 +4,33 @@
     box-sizing: border-box;
     font-family: 'Verdana', sans-serif;
   }
-  html, body{
+html, body{
     height: 100%;
   }
-  body{
-    background-color: #e9ecef;
+body{
+    background-image: url(https://images.unsplash.com/photo-1508108712903-49b7ef9b1df8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2969&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 50px;
+    background-attachment: fixed;
   }
+.container {
+  padding: 10px;
+  border-radius: 25px;
+  background-color: rgb(255 255 255/ 50%);
+}
+
+.card {
+  background-color: rgb(255 255 255/ 50%);
+}
+
+.round-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(255 255 255/ 50%);
+}
+
   /* .container{
     width: 90%;
     height: 400px;

@@ -1,38 +1,71 @@
-
-<div class="container text-center">
-<div class="jumbotron jumbotron-fluid" style='margin-top: 1rem; background-color: #dee2e6;'>
-    <div class="container text-center">
-        <h1 class="display-4">Restaurant APP</h1>
-        <p></p>
+<% if can? :manage, Restaurant %>
+    <div class="container text-center" style='background-color: rgb(0 0 0/0%);'>
+  <div class="jumbotron jumbotron-fluid" style='margin-top: 1rem;'>
+      <div class="text-center">
+          <h1 class="display-4">Restaurant APP</h1>
+          <p></p>
+      </div>
     </div>
+
+  <div class="row">
+    <% Restaurant.all.each do |restaurant| %>
+
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <div class="card-header">
+            <h5><%= restaurant.name %> </h5>
+          </div>
+          <div class="card-body">
+              <p class="card-text"><%= restaurant.address %></p>
+              <%= link_to "", restaurant_path(restaurant), class: "btn btn-outline-info fa-solid fa-eye" %>
+          </div>
+        </div>
+          <br>
+          <div id="dishes-container-<%= restaurant.id %>">
+              <button onclick='showDishes(this)' data-restaurant-id="<%= restaurant.id %>" class= 'btn btn-outline-dark btn-sm'>See more</button>
+          </div>
+      </div>
+    <% end %>
   </div>
+  </div>
+<% else %>
+  <div class="container text-center" style='background-color: rgb(0 0 0/0%);'>
+  <div class="jumbotron jumbotron-fluid" style='margin-top: 1rem;'>
+      <div class="text-center">
+          <h1 class="display-4">Restaurant APP</h1>
+          <p></p>
+      </div>
+    </div>
 
-<h3>Top 3 Restaurants with most items</h3>
-<div class="row">
-  <% Restaurant.select("restaurants.*, COUNT(items.id) AS items_count")
-              .joins(:items)
-              .group("restaurants.id")
-              .order("items_count DESC")
-              .limit(3)
-              .each do |restaurant| %>
+  <h3>Top 3 Restaurants with most items</h3>
+  <div class="row">
+    <% Restaurant.select("restaurants.*, COUNT(items.id) AS items_count")
+                .joins(:items)
+                .group("restaurants.id")
+                .order("items_count DESC")
+                .limit(3)
+                .each do |restaurant| %>
 
-    <div class="col-md-4 mt-4">
-      <div class="card" style='background-color: #dee2e6;'>
-        <div class="card-body">
-            <h5 class="card-subtitle"><%= restaurant.name %></h5>
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <div class="card-header">
+            <h5><%= restaurant.name %> </h5>
+          </div>
+          <div class="card-body">
             <p class="card-text"><%= restaurant.address %></p>
             <p class="card-title">Total items: <%= restaurant.items_count.to_i %></p>
             <%= link_to "", restaurant_path(restaurant), class: "btn btn-outline-info fa-solid fa-eye" %>
+          </div>
         </div>
+          <br>
+          <div id="dishes-container-<%= restaurant.id %>">
+              <button onclick='showDishes(this)' data-restaurant-id="<%= restaurant.id %>" class= 'btn btn-outline-dark btn-sm'>See more</button>
+          </div>
       </div>
-        <br>
-        <div id="dishes-container-<%= restaurant.id %>">
-            <button onclick='showDishes(this)' data-restaurant-id="<%= restaurant.id %>" class= 'btn btn-outline-dark btn-sm'>See more</button>
-        </div>
-    </div>
-  <% end %>
-</div>
-</div>
+    <% end %>
+  </div>
+  </div>
+<% end %>
 
 <script>
     function showDishes(button) {

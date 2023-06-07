@@ -4,11 +4,12 @@
   <%= link_to '', root_path, class: 'btn btn-outline-dark fa-solid fa-arrow-left', style:'margin:1rem;'%>
 </div>
 
-<div class='container text-center'>
+<div class='text-center'>
   <h1>Dishes</h1>
 </div>
 
-  <table class="table" style='margin:auto; width:50rem;'>
+<div class="container" style='width:35rem;'>
+  <table class="table" style='margin:auto; width:30rem;'>
   <thead>
     <tr>
       <th scope='col'>Name</th>
@@ -23,9 +24,10 @@
       <% end %>
     </tbody>
   </table>
+</div>
 
   <br>
   <div style='margin-left:2rem;'>
   <%= link_to "", new_dish_path, class: 'btn btn-outline-secondary btn-sm fa-solid fa-plus' %>
   </div>
-</div>
+

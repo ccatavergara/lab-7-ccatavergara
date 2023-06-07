@@ -25,7 +25,7 @@ dishes = Dish.create([
     {name: "Drink"},
     {name: "Appetizer"}
 ])
-#Items 
+#Items
 items = Item.create([
     {name: "Pizza", price: 100, callories: 1000, restaurant: restaurants[0], dish: dishes[1]},
     {name: "Burger", price: 50, callories: 500, restaurant: restaurants[1], dish: dishes[0]},
@@ -36,3 +36,6 @@ items = Item.create([
     {name: "Soup", price: 20, callories: 200, restaurant: restaurants[4], dish: dishes[1]},
     {name: "Coke", price: 10, callories: 100, restaurant: restaurants[0], dish: dishes[3]}
 ])
+
+#Users
+user = User.create({email:'mcvergara1@miuandes.cl', password:'catita', profile: 1})

@@ -1,19 +1,21 @@
-<div class='container' style='margin-left: 3rem; margin-top:1rem;'>
+<div style='margin-left: 3rem; margin-top:1rem;'>
   <%= link_to "", items_path, class: "btn btn-outline-dark fa-solid fa-arrow-left" %>
-  <p style="color: green"><%= notice %></p>
-
+  </div>
 
   <%= render @item %>
 
-
   <div>
     <br>
-    <button id='restaurants' class='btn btn-outline-dark' onclick='showRestaurants(event)'>Show Restaurants</button>
-    <br> <br>
-    <%= link_to "", edit_restaurant_item_path(@item.restaurant_id, @item), class: 'btn btn-outline-warning fa-solid fa-pencil' %>
-    <br><br>
+    <button id='restaurants' class='btn btn-outline-dark' onclick='showRestaurants(event)' style='margin-left:4rem;'>Show Restaurants</button>
 
-    <%= button_to "", @item, method: :delete , class: "btn btn-outline-danger fa-solid fa-trash"%>
+    <br> <br>
+    <% if can? :manage, Item %>
+      <%= link_to "", edit_restaurant_item_path(@item.restaurant_id, @item), class: 'btn btn-outline-warning fa-solid fa-pencil', style: 'margin-left:3rem;' %>
+    <% end %>
+    <br><br>
+    <% if can? :manage, Item %>
+      <%= button_to "", @item, method: :delete , class: "btn btn-outline-danger fa-solid fa-trash", style: 'margin-left:3rem;'%>
+    <% end %>
   </div>
 </div>
 

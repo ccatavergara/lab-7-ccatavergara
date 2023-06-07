@@ -1,13 +1,15 @@
-<nav class="navbar navbar-expand-lg" style="background-color: #adb5bd;">
-    <div class="container-fluid">
-        <%= link_to '', root_path, class: 'navbar-brand fas fa-utensils' %>
+<nav class="navbar navbar-expand-lg navbar-light" style='background-color: rgb(215 220 226 / 50%);'>
+  <div class="container" style='background-color: rgb(215 220 226 / 0%)'>
+    <%= link_to "", root_path, class: "navbar-brand fa-solid fa-utensils fa-xl" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="collapse navbar-collapse" id="navbarText">
 
+      </ul>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <%= link_to 'Restaurants', restaurants_path, class: 'nav-link active', 'aria-current': 'page' %>
@@ -24,14 +26,25 @@
             </li>
         </ul>
 
-        <form id="search-bar" class="d-flex">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <form id="search-bar" class="d-flex">
             <input id="search-restaurant" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-dark fa-solid fa-magnifying-glass" type="submit"></button>
-        </form>
-
-        </div>
+          </form>
+          <p></p>
+          <li>
+            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link btn" %>
+          </li>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link" %>
+          <%= link_to "Log In", new_user_session_path, class: "nav-item nav-link" %>
+        <% end %>
+      </ul>
     </div>
+  </div>
 </nav>
+
 
 <script>
 document.getElementById('search-bar').addEventListener('submit', function(event) {
